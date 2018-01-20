@@ -181,7 +181,11 @@ function heroAttack() {
 
 
 function heroHeal() {
+  document.getElementsByClassName("skill-block")[0].style.display = "none";
   hero.getHeal(30);
+  setTimeout(function() {
+    document.getElementsByClassName("skill-block")[0].style.display = "block";
+  }, 500);
 }
 
 
@@ -212,3 +216,18 @@ function finish() {
     dialog.classList.add("lose");
   }
 }
+
+
+document.onkeydown = function(event){
+  
+  var key = String.fromCharCode(event.keyCode);
+  if (key == "A" ) {
+    heroAttack();
+    
+  } else if (key == "H" ) {
+    heroHeal();
+  }
+}
+
+
+
