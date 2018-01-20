@@ -87,20 +87,26 @@ class Hero extends BaseCharacter {
     this.updateHtml(this.hpElement, this.hurtElement);
 
     var _this = this;
+    var i = 1; 
 
     _this.id = setInterval(function() {
-      
-      _this.element.getElementsByClassName("hurt-text")[0].classList.add("healed");
-      _this.element.getElementsByClassName("hurt-text")[0].innerHTML = heal;
-      _this.element.getElementsByClassName("hurt-text")[0].style.color = "green";
+      if (i == 1) {
+        _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
+        _this.element.getElementsByClassName("hurt-text")[0].classList.add("healed");
+        _this.element.getElementsByClassName("hurt-text")[0].innerHTML = heal;
+        _this.element.getElementsByClassName("hurt-text")[0].style.color = "green";
+      }
 
-    setTimeout(function(){
-      _this.element.getElementsByClassName("hurt-text")[0].classList.remove("healed");
-      _this.element.getElementsByClassName("hurt-text")[0].textContent = "";
-      clearInterval(_this.id);
-      }, 500);
-    });
+      _this.element.getElementsByClassName("effect-image")[0].src = 'image/effect/heal/' + 1 + '.png';
+      i++;
 
+      if (i>8) {
+        _this.element.getElementsByClassName("effect-image")[0].style.display = "none";
+        _this.element.getElementsByClassName("hurt-text")[0].classList.remove("healed");
+        _this.element.getElementsByClassName("hurt-text")[0].textContent = "";
+        clearInterval(_this.id);
+      }
+   }, 50);
   }
 }
 
@@ -174,9 +180,7 @@ function heroAttack() {
 
 
 function heroHeal() {
-  document.getElementsByClassName("skill-block")[0].style.display = "none";
   hero.getHeal(30);
-
 }
 
 
