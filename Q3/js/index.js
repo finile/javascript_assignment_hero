@@ -26,6 +26,7 @@ class BaseCharacter {
             _this.element.getElementsByClassName("effect-image")[0].style.display = "block";
             _this.element.getElementsByClassName("hurt-text")[0].classList.add("attacked");
             _this.element.getElementsByClassName("hurt-text")[0].textContent = damage;
+            _this.element.getElementsByClassName("hurt-text")[0].style.color = "red";
           }
 
           _this.element.getElementsByClassName("effect-image")[0].src = 'image/effect/blade/' + i + '.png';
