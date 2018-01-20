@@ -224,7 +224,7 @@ document.onkeydown = function(event){
   if (key == "A" ) {
     heroAttack();
     
-  } else if (key == "H" ) {
+  } else if (key == "D" ) {
     heroHeal();
   }
 }
